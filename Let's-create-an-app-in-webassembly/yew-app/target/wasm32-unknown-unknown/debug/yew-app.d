@@ -1,0 +1,1 @@
+C:\Users\scott\Documents\Coding\This-Week-In-Rust\Let's-create-an-app-in-webassembly\yew-app\target\wasm32-unknown-unknown\debug\yew-app.wasm: C:\Users\scott\Documents\Coding\This-Week-In-Rust\Let's-create-an-app-in-webassembly\yew-app\src\main.rs

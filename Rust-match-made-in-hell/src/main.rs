@@ -37,6 +37,52 @@ impl Drop for NoisyDrop {
     }
 }
 
+#[derive(Debug)]
+struct Foobar(i64);
+
+impl Foobar {
+    fn negated(&self) -> &i64 {
+        &self.0
+    }
+
+    fn get(&self) -> &i64 {
+        &self.0
+    }
+}
+
+#[derive(Default)]
+struct State {
+    value: u64,
+}
+
+impl State {
+    fn foo(&mut self) {
+        self.value += 4;
+        self.bar();
+        println!("exiting foo, value = {}", self.value);
+    }
+
+    fn bar(&mut self) {
+        if self.value > 10 {
+            self.value = 0
+        }
+    }
+}
+
+enum Node<T> {
+    Left(T),
+    Right(T),
+}
+
+impl<T> Node<T> {
+    fn get(&self) -> &T {
+        match self {
+            Self::Left(x) => x,
+            Self::Right(x) => x,
+        }
+    }
+}
+
 fn main() {
     let good = match is_good() {
         true => "It is good",
@@ -83,5 +129,38 @@ fn main() {
     let nd = NoisyDrop;
     println!("before drop...");
     drop(nd);
-    println!("after drop!")
+    println!("after drop!");
+
+    let g = Foobar(72);
+    println!("{g:?}");
+
+    let c = g.negated();
+    println!("{c}");
+
+    let f = Foobar(134);
+    let d = f.get();
+    //drop(f)
+    println!("d = {d}");
+
+    let s: Mutex<State> = Default::default();
+    for _ in 0..5 {
+        s.lock().foo();
+    }
+
+    let a = Mutex::new(Node::Left(23));
+    let b = Mutex::new(Node::Right(47));
+
+    fn inspect(n: &Mutex<Node<u64>>) {
+        let msg = {
+            let tmp1 = n.lock();
+            let tmpl2 = tmp1.get();
+            match tmpl2 {
+                0 => "zero",
+                _ => "non-zero",
+            }
+        };
+        println!("{msg}")
+    }
+    inspect(&a);
+    inspect(&b);
 }

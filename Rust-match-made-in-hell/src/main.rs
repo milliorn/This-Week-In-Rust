@@ -1,14 +1,22 @@
 use rand::Rng;
 
+pub enum Protection {
+    Secure,
+    Insecure,
+}
+
 fn is_good() -> bool {
     true
 }
 
-fn process(secure: bool) {
-    if secure {
-        println!("No hackers")
-    } else {
-        println!("Come on in")
+fn process(prot: Protection) {
+    match prot {
+        Protection::Secure => {
+            println!("No hackers")
+        }
+        Protection::Insecure => {
+            println!("Come in")
+        }
     }
 }
 
@@ -24,5 +32,7 @@ fn main() {
         5.. => "Victory",
         _ => "Defeat",
     };
-    println!("{results}")
+    println!("{results}");
+
+    process(Protection::Insecure)
 }

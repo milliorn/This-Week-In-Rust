@@ -2,6 +2,7 @@ use rand::Rng;
 
 pub enum Protection {
     Secure,
+    #[deprecated = "using secure mode everywhere is now strongly recommended"]
     Insecure,
 }
 
@@ -14,6 +15,7 @@ fn process(prot: Protection) {
         Protection::Secure => {
             println!("No hackers")
         }
+        #[allow(deprecated)]
         Protection::Insecure => {
             println!("Come in")
         }

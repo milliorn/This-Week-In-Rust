@@ -4,6 +4,14 @@ fn is_good() -> bool {
     true
 }
 
+fn process(secure: bool) {
+    if secure {
+        println!("No hackers")
+    } else {
+        println!("Come on in")
+    }
+}
+
 fn main() {
     let good = match is_good() {
         true => "It is good",

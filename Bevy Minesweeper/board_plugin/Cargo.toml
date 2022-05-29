@@ -11,7 +11,7 @@ default = []
 
 [dependencies]
 # Engine
-bevy = "0.6"
+bevy = "0.7"
 
 # Serialization
 serde = "1.0"

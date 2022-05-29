@@ -10,7 +10,7 @@ debug = ["board_plugin/debug", "bevy-inspector-egui"]
 default = []
 
 [dependencies]
-bevy = "0.6"
+bevy = "0.7"
 board_plugin = {path = "board_plugin"}
 
 # Hierarchy inspector debug

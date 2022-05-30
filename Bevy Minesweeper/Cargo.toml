@@ -1,0 +1,22 @@
+[package]
+edition = "2021"
+name = "minesweeper-tutorial"
+version = "0.1.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+debug = ["board_plugin/debug", "bevy-inspector-egui"]
+default = []
+
+[dependencies]
+bevy = "0.7"
+board_plugin = {path = "board_plugin"}
+
+# Hierarchy inspector debug
+bevy-inspector-egui = {version = "0.11", optional = true}
+
+[workspace]
+members = [
+  "board_plugin",
+]

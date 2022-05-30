@@ -14,6 +14,16 @@ fn print_user(user: &User) {
     println!("User {} is from {}, {}", name, city, country);
 }
 
+fn print_user2(user: &User) {
+    let User {
+        name: fullname,
+        city: metro,
+        country: nation,
+    } = user;
+
+    println!("User {} is from {}, {}", fullname, metro, nation);
+}
+
 fn my_function(data: &(u32, &str)) {
     let (my_num, my_str) = data;
     println!("my_num: {}, my_str: {}", my_num, my_str);
@@ -41,4 +51,6 @@ fn main() {
     };
 
     print_user(&user);
+    print_user2(&user);
+    print!("{}", city_name(&user));
 }

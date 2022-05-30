@@ -52,5 +52,11 @@ fn main() {
 
     print_user(&user);
     print_user2(&user);
-    print!("{}", city_name(&user));
+    println!("{}", city_name(&user));
+
+    let my_tuple = (4, "foo", false);
+
+    let (num, _, truthy) = my_tuple;
+
+    println!("{} {}", num, truthy);
 }

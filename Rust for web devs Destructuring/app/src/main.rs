@@ -19,6 +19,15 @@ fn my_function(data: &(u32, &str)) {
     println!("my_num: {}, my_str: {}", my_num, my_str);
 }
 
+fn city_name(user: &User) -> String {
+    let User {
+        name: _,
+        city,
+        country,
+    } = user;
+    format!("{}, {}", city, country)
+}
+
 fn main() {
     println!("Hello, world!");
 
